@@ -1,10 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
+
+	"github.com/Chaseshak/advent-of-code-2021/lib"
 )
 
 func check(e error) {
@@ -14,26 +13,10 @@ func check(e error) {
 }
 
 func main() {
-	depths := ParseFile("depths.txt")
+	depths := lib.ParseFile("depths.txt")
 
 	fmt.Printf("Part 1: %d\n", calculate_increases(depths))
 	fmt.Printf("Part 2: %d\n", calculate_window_increases(depths))
-}
-
-func ParseFile(path string) []int {
-	f, err := os.Open("depths.txt")
-	check(err)
-
-	scanner := bufio.NewScanner(f)
-	var depths []int
-	for scanner.Scan() {
-		x, err := strconv.Atoi(scanner.Text())
-		if err == nil {
-			depths = append(depths, x)
-		}
-	}
-
-	return depths
 }
 
 func calculate_increases(depths []int) int {
