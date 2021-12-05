@@ -6,10 +6,8 @@ import (
 )
 
 func ParseFile(path string) []string {
-	f, err := os.Open("depths.txt")
-	if err != nil {
-		panic(err)
-	}
+	f, err := os.Open(path)
+	Check(err)
 
 	var data []string
 	scanner := bufio.NewScanner(f)

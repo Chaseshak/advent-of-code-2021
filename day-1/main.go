@@ -6,12 +6,6 @@ import (
 	"github.com/Chaseshak/advent-of-code-2021/lib"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
 	parsed_data := lib.ParseFile("depths.txt")
 	depths := lib.StringArrayToIntArray(parsed_data)
