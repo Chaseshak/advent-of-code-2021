@@ -3,23 +3,24 @@ package lib
 import (
 	"bufio"
 	"os"
-	"strconv"
 )
 
-func ParseFile(path string) []int {
+func ParseFile(path string) []string {
 	f, err := os.Open("depths.txt")
 	if err != nil {
 		panic(err)
 	}
 
+	var data []string
 	scanner := bufio.NewScanner(f)
-	var depths []int
 	for scanner.Scan() {
-		x, err := strconv.Atoi(scanner.Text())
-		if err == nil {
-			depths = append(depths, x)
+		line := scanner.Text()
+		if line == "" {
+			continue
 		}
+
+		data = append(data, scanner.Text())
 	}
 
-	return depths
+	return data
 }

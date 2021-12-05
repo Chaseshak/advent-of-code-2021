@@ -13,7 +13,8 @@ func check(e error) {
 }
 
 func main() {
-	depths := lib.ParseFile("depths.txt")
+	parsed_data := lib.ParseFile("depths.txt")
+	depths := lib.StringArrayToIntArray(parsed_data)
 
 	fmt.Printf("Part 1: %d\n", calculate_increases(depths))
 	fmt.Printf("Part 2: %d\n", calculate_window_increases(depths))
